@@ -60,9 +60,9 @@ void LatchControl(num, value)
 {
 	P0 = value;
 	_nop_();
-	P2 = num << 5;
+	P2 |= (num << 5);
 	_nop_();
-	P2 = 0x0f;
+	P2 &= 0x1f;
 	_nop_();
 }
 
@@ -114,7 +114,7 @@ void main()
 	while(1){
 		long tickBkp = SysTick;
 		
-		if(tickBkp % 500 == 0){
+		if(tickBkp % 50 == 0){
 			//cai yang
 			last_vain3 = vain3;
 			EA = 0;
@@ -128,6 +128,7 @@ void main()
 				last = SysTick;
 			}
 		}
+		
 		
 		change_state();
 		if(tickBkp % 10 == 0){
