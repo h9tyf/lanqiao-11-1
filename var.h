@@ -17,8 +17,8 @@ extern long last;
 #define SHOW_N 13
 
 extern u8 vp;
-extern u8 vain3;
-extern u8 last_vain3;
+extern long vain3;
+extern long last_vain3;
 extern u8 count;
 extern u8 invalid_operation_count;
 
@@ -38,7 +38,7 @@ void respond_to_button();
 //show
 void change_show();
 enum SHOW{
-	DATA = 0, PARA, COUNT
+	DATA = 1, PARA, COUNT
 };
 extern enum SHOW show_state;
 

@@ -64,8 +64,7 @@ void respond_to_button()
 				if(show_state == PARA){
 					save_vp();
 				}
-				button_flag[S12] = 0;
-				show_state = (show_state + 1)%3;
+				show_state = show_state%3 + 1;
 			} else if(i == S13){
 				if(show_state == COUNT){
 					invalid_operation_count = 0;
@@ -77,13 +76,15 @@ void respond_to_button()
 				if(show_state == PARA){
 					invalid_operation_count = 0;
 					vp = (vp + 5) % 55;
+					save_vp();
 				} else {
 					invalid_operation_count += 1;
 				}
 			} else if(i == S17){
 				if(show_state == PARA){
 					invalid_operation_count = 0;
-					vp = (vp + 5) % 55;
+					vp = (vp  + 55 - 5) % 55;
+					save_vp();
 				} else {
 					invalid_operation_count += 1;
 				}
